@@ -29,9 +29,9 @@ html {
 }
 
 .hero {
-  background: #84a441;
   z-index: 0;
-  background-image: url("../assets/hero-bg.png"), linear-gradient(0deg, #7ee8bd 0%, #84a441 100%);
+  background-color: #1b6ce2;
+  background-image: url("../assets/hero-bg.png"), linear-gradient(0deg, #1b6ae3 0%, #118ae3 100%);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -120,11 +120,11 @@ html {
   background: linear-gradient(to right, #fe99c4, #f37ce7);
 }
 
-.hero .hero__button:hover {
+.hero__button:hover {
   color: #fff;
 }
 
-.hero .hero__button:hover:before {
+.hero__button:hover:before {
   content: "";
   z-index: -1;
   border-radius: 100%;
@@ -232,11 +232,33 @@ html {
   animation: 2s ease-out slideInFromTop;
 }
 
+@-webkit-keyframes headerFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes headerFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .home .header, .home .navbar {
   position: absolute;
 }
 
-.home .navbar.vue-sticky-element--stuck {
+.home .navbar.fixed {
+  -webkit-animation: .5s ease-out headerFadeIn;
+  animation: .5s ease-out headerFadeIn;
   position: fixed;
 }
 
