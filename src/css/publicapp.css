@@ -19549,7 +19549,7 @@ input::-webkit-search-results-decoration {
   justify-content: center;
   width: 100%;
   /*max-width: 400px;*/
-  background-image: url("/images/layer2.svg");
+  background-image: url("../assets/layer2.svg");
   background-repeat: no-repeat;
   background-position: center bottom -210px;
   background-size: 400px;

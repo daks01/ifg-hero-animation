@@ -12,8 +12,7 @@ html {
 
 /* HERO */
 .hero {
-  background: rgb(126,232,189);
-  background-color: rgba(132,164,65,1);
+  background-color: #1b6ce2;
   background-image: 
     url(../assets/hero-bg.png), 
     linear-gradient(0deg, rgba(126,232,189,1) 0%, rgba(132,164,65,1) 100%);
