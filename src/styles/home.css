@@ -15,7 +15,7 @@ html {
   background-color: #1b6ce2;
   background-image: 
     url(../assets/hero-bg.png), 
-    linear-gradient(0deg, rgba(126,232,189,1) 0%, rgba(132,164,65,1) 100%);
+    linear-gradient(0deg, #1b6ae3 0%, #118ae3 100%);
   /* видео в afivs весит мало, но вкладка жрет много памяти */
   /* background-image:
     image-set(
