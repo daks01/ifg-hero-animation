@@ -19,7 +19,7 @@
     "build": "task:css",
     "task:server": "serve",
     "task:watch": "npm-watch",
-    "task:css": "lightningcss src/styles/home.css -o src/css/home.css --bundle --sourcemap --nesting --custom-media --browserslist"
+    "task:css": "lightningcss src/styles/index.css -o src/css/home.css --bundle --sourcemap --nesting --custom-media --browserslist"
   },
   "dependencies": {
     "browserlist": "^1.0.1",
