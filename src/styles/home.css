@@ -1,0 +1,303 @@
+/*! npm i && npm run build */
+@import '_variables.css';
+
+/*! Page scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+:target {
+    scroll-margin-top: 72px;
+}
+
+/* HERO */
+.hero {
+  background: rgb(126,232,189);
+  background-color: rgba(132,164,65,1);
+  background-image: 
+    url(../assets/hero-bg.png), 
+    linear-gradient(0deg, rgba(126,232,189,1) 0%, rgba(132,164,65,1) 100%);
+  /* видео в afivs весит мало, но вкладка жрет много памяти */
+  /* background-image:
+    image-set(
+        "../assets/bg-video.avifs" type("image/avif"),
+        "../assets/hero-bg.png" type("image/png")
+    ),
+    linear-gradient(0deg, rgba(126,232,189,1) 0%, rgba(132,164,65,1) 100%); */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 0;
+}
+.hero__bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* IDLE SCENE */
+.hero__scene {
+  padding-top: 6.5vw;
+  color: white;
+  overflow: hidden;
+}
+.hero__h1 {
+  font-size: 18vw;
+  line-height: 1;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.hero__h1-left {
+  position: relative;
+}
+.hero__h1-right {
+  position: relative;
+  margin-top: 4.5vw;
+}
+
+/* BUTTONS */
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 0.9em;
+  font-size: 2.2vw;
+  line-height: 1;
+  border-radius: 10vw;
+  border: none;
+  background: #C3E154;
+  color: rgba(255,255,255,.75);
+  position: relative;
+  z-index: 1;
+}
+.hero__button_type-big {
+  padding: 0.75em 1.8em;
+}
+.hero__button__color-orange {
+  background: linear-gradient(to right, #FAAF4C, #FA8B4C);
+  position: absolute;
+  right: 12%;
+  top: 6%;
+}
+.hero__button__color-sky {
+  background: linear-gradient(to right, #6CAFFF, #6C8CFF);
+  position: absolute;
+  right: 34%;
+  top: -8%;
+}
+.hero__button__color-green {
+  background: linear-gradient(to right, #C3E154, #92E154);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.hero__button__color-yellow {
+  background: linear-gradient(to right, #FDCD00, #FD9800);
+  margin-left: 12.5vw;
+}
+.hero__button__color-violet {
+  background: linear-gradient(to right, #FE99C4, #F37CE7);
+}
+
+.hero {
+  .hero__button:hover {
+    color: #fff;
+
+    &::before {
+      content: '';
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      padding: 50% 0;
+      border-radius: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &:not(.animate) {
+    .hero__button__color-orange {
+      &:hover {
+        transform: rotate(29deg);
+      }
+    }
+    .hero__button__color-sky {
+      &:hover {
+        transform: rotate(29deg);
+      }
+    }
+    .hero__button__color-green {
+      &:hover {
+        transform: rotate(19deg);
+      }
+    }
+    .hero__button__color-yellow {
+      &:hover {
+        transform: rotate(10deg);
+      }
+    }
+    .hero__button__color-violet {
+      &:hover {
+        transform: rotate(23deg);
+      }
+    }
+  }
+}
+
+.hero__description {
+  position: relative;
+  z-index: 1;
+  margin-top: 2vw;
+  font-size: 1.8vw;
+  line-height: 1.25;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero__description-left {}
+.hero__description-right {
+  text-align: right;
+}
+
+.hero_description-text {
+  margin-bottom: 2vw;
+}
+
+.hero__description a {
+  font-size: 1.3vw;
+  color: currentColor;
+}
+
+.hero__footer {
+  height: 500px;
+  margin-top: -13vw;
+  position: relative;
+  z-index: 0;
+}
+
+/* HEADER ANIMATION ON LOAD */
+@keyframes slideInFromTop {
+    0% {
+      transform: translate(0, -100%);
+    }
+    50% {
+      transform: translate(0, -100%);
+    }
+    100% {
+      transform: none;
+    }
+}
+
+.home .header {
+    animation: 2s ease-out 0s 1 slideInFromTop;
+}
+
+/*! HEADER ANIMATION ON SCROLL */
+.home .header,
+.home .navbar {
+    position: absolute;
+}
+
+.home .navbar.vue-sticky-element--stuck {
+    position: fixed;
+}
+
+/* SCENE ANIMATION ON LOAD */
+@keyframes heroFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+  30% {
+    opacity: .1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__scene {
+  animation: 1s ease-out 0s 1 heroFadeIn;
+}
+
+/* HERO ANIMATION ON LOAD (idle) && SCROLL (desctop) */
+.hero__h1-left,
+.hero__h1-right,
+.hero__button,
+.hero__footer, 
+.hero__description-left,
+.hero__description-right {
+  transition: transform ease 1s, padding ease 1s, font-size ease 1s, opacity ease .1s;
+  will-change: transform;
+}
+
+.hero.idle {
+  .hero__h1-left {
+    transform: translate(-9vw, 0);
+  }
+  .hero__h1-right {
+    transform: translate(-22vw, 0);
+  }
+  .hero__footer {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+}
+
+.hero.animate {
+  .hero__h1-left {
+    transform: translate(-9vw, 5vw);
+  }
+  .hero__h1-right {
+    transform: translate(-22vw, 5vw);
+  }
+  .hero__footer {
+    transform: translate(0, 350px);
+  }
+}
+
+.hero.idle,
+.hero.animate {
+  .hero__button {
+    font-size: 1.8vw;
+    padding: 0.7vw 1.5vw;
+  }
+  .hero__button__color-green {
+    transform: translate(1vw, -1vw)rotate(19deg);
+  }
+  .hero__button__color-orange {
+    transform: translate(1vw, 0) rotate(29deg);
+  }
+  .hero__button__color-yellow {
+    transform: translate(21vw, -10vw) rotate(10deg);
+  }
+  .hero__button__color-sky {
+    transform: translate(3vw, 3vw)rotate(29deg);
+  }
+  .hero__button__color-violet {
+    transform: translate(-21vw, 3vw)rotate(23deg);
+  }
+
+  .hero__description-left {
+    transform: translate(3vw, 8vw);
+  }
+  .hero__description-right {
+    transform: translate(-2vw, -4vw);
+  }
+}
+
+
+
+
+
+
+
+

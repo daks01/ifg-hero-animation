@@ -1,0 +1,5 @@
+"remoteBrowser.connectionOptions": {
+  "host": "vh394.timeweb.ru",  // MANDATORY
+  "username": "cw13161", // MANDATORY
+  "defaultPath": "/home/c/cw13161/new_design/public_html/" // Default directory to start in on connect (Absolute path)
+},
