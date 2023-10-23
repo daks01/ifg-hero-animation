@@ -1,7 +1,6 @@
 /*! npm i && npm run build */
 /*! CSS custom properties (variables) */
 .hero {
-  z-index: 0;
   background-color: #1b6ce2;
   background-image: url("../assets/hero-bg.png"), linear-gradient(0deg, #1b6ae3 0%, #118ae3 100%);
   background-position: center;
@@ -356,10 +355,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .hero__bg-video {
-    display: none;
-  }
-
   .hero__scene {
     padding-top: 30.5vw;
   }

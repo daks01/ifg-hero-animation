@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hero</title>
 
-    <!-- IGNORE THIS! подключение стилей сайта и касnомного шрифта для демки -->
+    <!-- IGNORE THIS! подключение стилей сайта и кастомного шрифта для демки -->
     <link rel="stylesheet" href="src/css/publicapp.css">
     <style>
         @font-face {
@@ -34,7 +34,7 @@
         }
     </style>
 
-    <link rel="stylesheet" href="src/css/home.css?v=0.1">
+    <link rel="stylesheet" href="src/css/home.css?v=0.7">
     <script type="text/javascript" src="src/js/home.js?v=0.1" defer></script>
 </head>
 <body class="home-controller">
@@ -201,19 +201,24 @@
                             </div>
                         </div>
 
-                        <a href="#scanner" class="btn btn-success btn-scaner" hidden>
-                            Сканер здоровья
-                            <svg aria-hidden="true" width="14" height="28" viewBox="0 0 14 28" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M1.645 19.488L5.83333 23.6004L5.83333 0L8.16667 0L8.16667 23.6004L12.355 19.4765L14 21.1077L7 28L0 21.1077L1.645 19.488Z"
-                                    fill="white" />
-                            </svg>
-                        </a>
                     </div>
+                </div>
+                
+                <!-- Сканер оставить как есть -->
+                <div class="mobile-scaner">
+                    <a href="#scanner" class="btn btn-success btn-scaner">
+                        Сканер здоровья
+                        <svg aria-hidden="true" width="14" height="28" viewBox="0 0 14 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M1.645 19.488L5.83333 23.6004L5.83333 0L8.16667 0L8.16667 23.6004L12.355 19.4765L14 21.1077L7 28L0 21.1077L1.645 19.488Z"
+                                fill="white" />
+                        </svg>
+                    </a>
                 </div>
             </section>
             <script>
+                // LOADING HERO ANIMATION
                 (function() {
                     const hero = document.querySelector('[data-hero]');
                     hero.classList.add('idle');

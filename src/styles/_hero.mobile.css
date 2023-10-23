@@ -4,9 +4,9 @@
 
   /* HERO */
   .hero {}
-  .hero__bg-video {
+  /* .hero__bg-video {
     display: none;
-  }
+  } */
 
   /* IDLE SCENE */
   .hero__scene {
