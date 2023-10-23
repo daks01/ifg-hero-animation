@@ -162,7 +162,7 @@
 
 .hero__footer {
   z-index: 0;
-  height: 500px;
+  height: 40vw;
   margin-top: -13vw;
   position: relative;
 }
