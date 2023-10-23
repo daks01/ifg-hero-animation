@@ -356,6 +356,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .hero__bg-video {
+    display: none;
+  }
+
   .hero__scene {
     padding-top: 30.5vw;
   }
