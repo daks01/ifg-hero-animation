@@ -37,10 +37,7 @@
     <link rel="stylesheet" href="src/css/home.css?v=0.1">
     <script type="text/javascript" src="src/js/home.js?v=0.1" defer></script>
 </head>
-
-<!-- ToDo накинуть класс .home для главной -->
-
-<body class="home">
+<body class="home-controller">
     <div id="publicapp">
         <main class="content">
 
@@ -189,11 +186,11 @@
                                     <div data-v-3d1a4f76="" class="slick-list">
                                         <div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track">
                                             <div data-v-e4caeaf8="" tabindex="-1" data-index="-1" aria-hidden="true"
-                                                class="slick-slide slick-cloned" style="width: 350px;">
+                                                class="slick-slide slick-cloned" style="width: 100%;">
                                                 <div data-v-e4caeaf8="">
                                                     <img data-v-0df6ea26="" data-v-e4caeaf8=""
                                                         src="http://new.cw13161.tmweb.ru//images/phone2home.svg" alt=""
-                                                        width="403" tabindex="-1"
+                                                        width="100%" tabindex="-1"
                                                         style="width: 100%; display: inline-block;">
                                                 </div>
                                             </div>
@@ -226,8 +223,9 @@
                 })();
             </script>
 
-            <section style="margin-top: -90px; position: relative; z-index: 1;">
-                <div style="background: #eaeceb; border-radius: 35px; max-width: 80%; margin: 0 auto; height: 100vh;">
+            <section id="waitingauth" class="container-fluid">
+                <div class="waitingauth">
+                    <div style="height: 50vh;"></div>
                 </div>
             </section>
             <!-- <div data-v-a2f233da="" class="float-btn-test">

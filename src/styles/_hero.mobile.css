@@ -1,0 +1,127 @@
+@import '_variables.css';
+
+@media screen and (--screen-tablet) {
+
+  /* HERO */
+  .hero {}
+  .hero__bg-video {
+    display: none;
+  }
+
+  /* IDLE SCENE */
+  .hero__scene {
+    padding-top: 30.5vw;
+  }
+  .hero__h1 {
+    font-size: 30vw;
+    line-height: 0.45;
+    position: relative;
+    flex-direction: column;
+  }
+  .hero__h1-right {
+    text-align: right;
+  }
+
+  /* BUTTONS */
+  .hero__button {
+    font-size: 4.5vw;
+  }
+  .hero__button_type-big {
+    padding: 0.65em 1.5em;
+  }
+  .hero__button__color-orange {
+    top: -92%;
+    right: 39%;
+  }
+  .hero__button__color-sky {
+    top: -80%;
+    right: 4%;
+    transform: rotate(15deg);
+  }
+  .hero__button__color-green {
+    bottom: 98%;
+    transform: rotate(-16deg);
+  }
+  .hero__button__color-yellow {
+    margin: 0;
+    position: absolute;
+    transform: rotate(-49deg);
+    top: 2%;
+    left: -7%;
+  }
+  .hero__button__color-violet {
+    margin-top: 10vw;
+    margin-bottom: 2vw;
+  }
+
+  .hero__description-left {
+    & p {
+      display: none;
+    }
+  } 
+  .hero__description-right {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .hero_description-text {
+    font-size: 6vw;
+    line-height: 1;
+  }
+
+  .hero__description a {
+    display: none
+  }
+
+  .hero__footer {
+    margin-top: 0;
+    height: 95vw;
+  }
+
+  /* HERO ANIMATION ON LOAD (idle) && SCROLL (desctop) */
+  .hero__h1-left,
+  .hero__h1-right,
+  .hero__button,
+  .hero__footer,
+  .hero__description-right {
+    transition: transform ease 1s, padding ease 1s, font-size ease 1s;
+    will-change: transform;
+  }
+
+  .hero.animate {
+    .hero__h1-left {
+      transform: translate(-36vw, 0);
+    }
+    .hero__h1-right {
+      transform: translate(27vw, 0);
+    }
+    .hero__footer {
+      transform: translate(0, -5vw);
+    }
+    .hero__button {
+      font-size: 3.1vw;
+    }
+    .hero__button__color-green {
+      transform: translate(33vw, -15vw) rotate(25deg);
+    }
+    .hero__button__color-orange {
+      transform: translate(33vw, 5vw) rotate(25deg)
+    }
+    .hero__button__color-yellow {
+      transform: translate(29vw, -11vw) rotate(5deg);
+      font-size: 3.1vw;
+    }
+    .hero__button__color-sky {
+      transform: translate(-53vw, 0) rotate(-45deg);
+    }
+    .hero__button__color-violet {
+      transform: translate(-41vw, -2vw) rotate(-12deg);
+      font-size: 3.1vw;
+    }
+
+    .hero__description-right {
+      transform: translate(0, -1vw);
+    }
+  }
+
+}
