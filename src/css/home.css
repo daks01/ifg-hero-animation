@@ -1,6 +1,7 @@
 /*! npm i && npm run build */
 /*! CSS custom properties (variables) */
 .hero {
+  z-index: 0;
   background-color: #1b6ce2;
   background-image: url("../assets/hero-bg.png"), linear-gradient(0deg, #1b6ae3 0%, #118ae3 100%);
   background-position: center;
@@ -496,6 +497,11 @@ html {
 
 :target {
   scroll-margin-top: 72px;
+}
+
+.mobile-scaner {
+  top: -30px;
+  bottom: auto !important;
 }
 
 /*# sourceMappingURL=src/css/home.css.map */
