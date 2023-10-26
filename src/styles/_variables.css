@@ -8,6 +8,7 @@
 @custom-media --screen-phone (max-width: 375px);
 
 :root{
+    --max-hero-scene-width: 1440px;
 }
 
 @media screen and (--screen-desktop-large) {
