@@ -70,39 +70,43 @@
 }
 
 .hero__button__color-orange {
-  background: linear-gradient(to right, #faaf4c, #fa8b4c);
+  background-color: #faaf4c;
   position: absolute;
   top: 6%;
   right: 12%;
 }
 
 .hero__button__color-sky {
-  background: linear-gradient(to right, #6cafff, #6c8cff);
+  background-color: #6cafff;
   position: absolute;
   top: -8%;
   right: 34%;
 }
 
 .hero__button__color-green {
-  background: linear-gradient(to right, #c3e154, #92e154);
+  background-color: #c3e154;
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
 .hero__button__color-yellow {
-  background: linear-gradient(to right, #fdcd00, #fd9800);
+  background-color: #fdcd00;
 }
 
 .hero__button__color-violet {
-  background: linear-gradient(to right, #fe99c4, #f37ce7);
+  background-color: #fe99c4;
 }
 
-.hero__button:hover {
+.hero__button[disabled] {
+  pointer-events: none;
+}
+
+.hero__button.active, .hero__button:not([disabled]):hover {
   color: #fff;
 }
 
-.hero__button:hover:before {
+:is(.hero__button.active, .hero__button:not([disabled]):hover):before {
   content: "";
   z-index: -1;
   border-radius: 100%;
@@ -117,27 +121,52 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero:not(.animate) .hero__button__color-orange:hover {
+  .hero:not(.animate) .hero__button__color-orange:not([disabled]):hover {
     -webkit-transform: rotate(29deg);
     transform: rotate(29deg);
   }
 
-  .hero:not(.animate) .hero__button__color-sky:hover {
+  .hero:not(.animate) .hero__button__color-orange.active {
     -webkit-transform: rotate(29deg);
     transform: rotate(29deg);
   }
 
-  .hero:not(.animate) .hero__button__color-green:hover {
+  .hero:not(.animate) .hero__button__color-sky:not([disabled]):hover {
+    -webkit-transform: rotate(29deg);
+    transform: rotate(29deg);
+  }
+
+  .hero:not(.animate) .hero__button__color-sky.active {
+    -webkit-transform: rotate(29deg);
+    transform: rotate(29deg);
+  }
+
+  .hero:not(.animate) .hero__button__color-green:not([disabled]):hover {
     -webkit-transform: rotate(19deg);
     transform: rotate(19deg);
   }
 
-  .hero:not(.animate) .hero__button__color-yellow:hover {
+  .hero:not(.animate) .hero__button__color-green.active {
+    -webkit-transform: rotate(19deg);
+    transform: rotate(19deg);
+  }
+
+  .hero:not(.animate) .hero__button__color-yellow:not([disabled]):hover {
     -webkit-transform: rotate(10deg);
     transform: rotate(10deg);
   }
 
-  .hero:not(.animate) .hero__button__color-violet:hover {
+  .hero:not(.animate) .hero__button__color-yellow.active {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+
+  .hero:not(.animate) .hero__button__color-violet:not([disabled]):hover {
+    -webkit-transform: rotate(23deg);
+    transform: rotate(23deg);
+  }
+
+  .hero:not(.animate) .hero__button__color-violet.active {
     -webkit-transform: rotate(23deg);
     transform: rotate(23deg);
   }
@@ -171,12 +200,54 @@
 }
 
 .hero__footer {
-  --height: min(40vw, var(--max-hero-scene-width) / 100 * 40);
-  --margin-top: min(-13vw, var(--max-hero-scene-width) / 100 * -13);
+  --height: min(33vw, var(--max-hero-scene-width) / 100 * 33);
+  --margin-top: min(-19vw, var(--max-hero-scene-width) / 100 * -19);
   height: var(--height);
   margin-top: var(--margin-top);
   z-index: 0;
   position: relative;
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+  .hero__footer {
+    --margin-top: min(-8vw, var(--max-hero-scene-width) / 100 * -8);
+    margin-top: var(--margin-top);
+  }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+  .hero__footer {
+    --margin-top: min(-11vw, var(--max-hero-scene-width) / 100 * -11);
+    margin-top: var(--margin-top);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .hero__footer {
+    --margin-top: min(-15vw, var(--max-hero-scene-width) / 100 * -15);
+    margin-top: var(--margin-top);
+  }
+}
+
+.hero__phone {
+  --width: min(21vw, var(--max-hero-scene-width) / 100 * 21);
+  --height: calc(var(--width) * 2.015);
+  width: var(--width);
+  height: var(--height);
+  background: url("../assets/iphone/IPhone.svg") top / contain no-repeat;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.hero__phone-slider {
+  height: 100%;
+  padding: 19% 6% 6%;
+}
+
+.hero__phone-slider img {
+  vertical-align: top;
+  width: 100%;
+  margin: 0 1.2%;
 }
 
 @-webkit-keyframes headerFadeIn {
@@ -288,6 +359,8 @@
   .hero__scene {
     -webkit-animation: 1s ease-out heroFadeIn;
     animation: 1s ease-out heroFadeIn;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   .hero.idle .hero__h1-left {
@@ -309,7 +382,7 @@
   }
 
   .hero__h1-left, .hero__h1-right, .hero__button, .hero__footer, .hero__description-left, .hero__description-right {
-    will-change: transform;
+    will-change: transform, font-size;
     transition: -webkit-transform 1s, transform 1s, padding 1s, font-size 1s, opacity .1s;
   }
 
@@ -333,46 +406,42 @@
     transform: translate(0, var(--y));
   }
 
-  :is(.hero.idle, .hero.animate) .hero__button {
-    --font-size: min(1.8vw, var(--max-hero-scene-width) / 100 * 1.8);
-    --padding-y: min(.7vw, var(--max-hero-scene-width) / 100 * .7);
-    --padding-x: min(1.5vw, var(--max-hero-scene-width) / 100 * 1.5);
-    font-size: var(--font-size);
-    padding: var(--padding-y) var(--padding-x);
+  :is(.hero.idle, .hero.animate) .hero__button_type-big {
+    padding: .4em .9em;
   }
 
   :is(.hero.idle, .hero.animate) .hero__button__color-green {
     --x: min(1vw, var(--max-hero-scene-width) / 100 * 1);
     --y: min(-1vw, var(--max-hero-scene-width) / 100 * -1);
-    -webkit-transform: translate(var(--x), var(--y)) rotate(19deg);
-    transform: translate(var(--x), var(--y)) rotate(19deg);
+    -webkit-transform: translate(var(--x), var(--y)) rotate(19deg) scale(.8);
+    transform: translate(var(--x), var(--y)) rotate(19deg) scale(.8);
   }
 
   :is(.hero.idle, .hero.animate) .hero__button__color-orange {
     --x: min(1vw, var(--max-hero-scene-width) / 100 * 1);
-    -webkit-transform: translate(var(--x), 0) rotate(29deg);
-    transform: translate(var(--x), 0) rotate(29deg);
+    -webkit-transform: translate(var(--x), 0) rotate(29deg) scale(.8);
+    transform: translate(var(--x), 0) rotate(29deg) scale(.8);
   }
 
   :is(.hero.idle, .hero.animate) .hero__button__color-yellow {
     --x: min(21vw, var(--max-hero-scene-width) / 100 * 21);
     --y: min(-10vw, var(--max-hero-scene-width) / 100 * -10);
-    -webkit-transform: translate(var(--x), var(--y)) rotate(10deg);
-    transform: translate(var(--x), var(--y)) rotate(10deg);
+    -webkit-transform: translate(var(--x), var(--y)) rotate(10deg) scale(.8);
+    transform: translate(var(--x), var(--y)) rotate(10deg) scale(.8);
   }
 
   :is(.hero.idle, .hero.animate) .hero__button__color-sky {
     --x: min(3vw, var(--max-hero-scene-width) / 100 * 3);
     --y: min(3vw, var(--max-hero-scene-width) / 100 * 3);
-    -webkit-transform: translate(var(--x), var(--y)) rotate(29deg);
-    transform: translate(var(--x), var(--y)) rotate(29deg);
+    -webkit-transform: translate(var(--x), var(--y)) rotate(29deg) scale(.8);
+    transform: translate(var(--x), var(--y)) rotate(29deg) scale(.8);
   }
 
   :is(.hero.idle, .hero.animate) .hero__button__color-violet {
     --x: min(-21vw, var(--max-hero-scene-width) / 100 * -21);
     --y: min(3vw, var(--max-hero-scene-width) / 100 * 3);
-    -webkit-transform: translate(var(--x), var(--y)) rotate(23deg);
-    transform: translate(var(--x), var(--y)) rotate(23deg);
+    -webkit-transform: translate(var(--x), var(--y)) rotate(23deg) scale(.8);
+    transform: translate(var(--x), var(--y)) rotate(23deg) scale(.8);
   }
 
   :is(.hero.idle, .hero.animate) .hero__description-left {
@@ -418,13 +487,28 @@
     font-size: 4.5vw;
   }
 
+  .hero__button.active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
   .hero__button_type-big {
     padding: .65em 1.5em;
+  }
+
+  .hero__button_type-big.active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   .hero__button__color-orange {
     top: -92%;
     right: 39%;
+  }
+
+  .hero__button__color-orange.active {
+    -webkit-transform: scale(1.1)rotate(-10deg);
+    transform: scale(1.1)rotate(-10deg);
   }
 
   .hero__button__color-sky {
@@ -434,10 +518,20 @@
     transform: rotate(15deg);
   }
 
+  .hero__button__color-sky.active {
+    -webkit-transform: scale(1.1)rotate(5deg);
+    transform: scale(1.1)rotate(5deg);
+  }
+
   .hero__button__color-green {
     bottom: 98%;
     -webkit-transform: rotate(-16deg);
     transform: rotate(-16deg);
+  }
+
+  .hero__button__color-green.active {
+    -webkit-transform: scale(1.1)rotate(-26deg);
+    transform: scale(1.1)rotate(-26deg);
   }
 
   .hero__button__color-yellow {
@@ -449,9 +543,19 @@
     transform: rotate(-49deg);
   }
 
+  .hero__button__color-yellow.active {
+    -webkit-transform: scale(1.1)rotate(-59deg);
+    transform: scale(1.1)rotate(-59deg);
+  }
+
   .hero__button__color-violet {
     margin-top: 10vw;
     margin-bottom: 2vw;
+  }
+
+  .hero__button__color-violet.active {
+    -webkit-transform: scale(1.1)rotate(-10deg);
+    transform: scale(1.1)rotate(-10deg);
   }
 
   .hero__description-left p {
@@ -473,13 +577,24 @@
   }
 
   .hero__footer {
-    height: 95vw;
-    margin-top: 0;
+    height: 124vw;
+    max-height: 500px;
+    margin-top: 5vw;
+  }
+
+  .hero__phone {
+    --width: min(80vw, var(--max-hero-scene-width) / 100 * 80);
+    width: var(--width);
+    max-width: 350px;
   }
 
   .hero__h1-left, .hero__h1-right, .hero__button, .hero__footer, .hero__description-right {
-    will-change: transform;
-    transition: -webkit-transform 1s, transform 1s, padding 1s, font-size 1s;
+    will-change: transform, font-size;
+    -webkit-perspective: 1px;
+    perspective: 1px;
+    -webkit-backface-visibility: none;
+    backface-visibility: none;
+    transition: -webkit-transform 1s, transform 1s, font-size 1s;
   }
 
   .hero.animate .hero__h1-left {
@@ -493,39 +608,58 @@
   }
 
   .hero.animate .hero__footer {
-    -webkit-transform: translate(0, -5vw);
-    transform: translate(0, -5vw);
-  }
-
-  .hero.animate .hero__button {
-    font-size: 3.1vw;
+    -webkit-transform: translate(0, 5vw);
+    transform: translate(0, 5vw);
   }
 
   .hero.animate .hero__button__color-green {
-    -webkit-transform: translate(33vw, -15vw)rotate(25deg);
-    transform: translate(33vw, -15vw)rotate(25deg);
+    -webkit-transform: translate(33vw, -15vw)rotate(25deg)scale(.7);
+    transform: translate(33vw, -15vw)rotate(25deg)scale(.7);
+  }
+
+  .hero.animate .hero__button__color-green.active {
+    -webkit-transform: translate(33vw, -15vw)rotate(15deg)scale(.9);
+    transform: translate(33vw, -15vw)rotate(15deg)scale(.9);
   }
 
   .hero.animate .hero__button__color-orange {
-    -webkit-transform: translate(33vw, 5vw)rotate(25deg);
-    transform: translate(33vw, 5vw)rotate(25deg);
+    -webkit-transform: translate(33vw, 5vw)rotate(25deg)scale(.7);
+    transform: translate(33vw, 5vw)rotate(25deg)scale(.7);
+  }
+
+  .hero.animate .hero__button__color-orange.active {
+    -webkit-transform: translate(33vw, 5vw)rotate(15deg)scale(.9);
+    transform: translate(33vw, 5vw)rotate(15deg)scale(.9);
   }
 
   .hero.animate .hero__button__color-yellow {
-    font-size: 3.1vw;
-    -webkit-transform: translate(29vw, -11vw)rotate(5deg);
-    transform: translate(29vw, -11vw)rotate(5deg);
+    -webkit-transform: translate(29vw, -11vw)rotate(5deg)scale(.7);
+    transform: translate(29vw, -11vw)rotate(5deg)scale(.7);
+  }
+
+  .hero.animate .hero__button__color-yellow.active {
+    -webkit-transform: translate(29vw, -11vw)rotate(-5deg)scale(.9);
+    transform: translate(29vw, -11vw)rotate(-5deg)scale(.9);
   }
 
   .hero.animate .hero__button__color-sky {
-    -webkit-transform: translate(-53vw)rotate(-45deg);
-    transform: translate(-53vw)rotate(-45deg);
+    -webkit-transform: translate(-53vw)rotate(-45deg)scale(.7);
+    transform: translate(-53vw)rotate(-45deg)scale(.7);
+  }
+
+  .hero.animate .hero__button__color-sky.active {
+    -webkit-transform: translate(-53vw)rotate(-55deg)scale(.9);
+    transform: translate(-53vw)rotate(-55deg)scale(.9);
   }
 
   .hero.animate .hero__button__color-violet {
-    font-size: 3.1vw;
-    -webkit-transform: translate(-41vw, -2vw)rotate(-12deg);
-    transform: translate(-41vw, -2vw)rotate(-12deg);
+    -webkit-transform: translate(-41vw, -2vw)rotate(-12deg)scale(.7);
+    transform: translate(-41vw, -2vw)rotate(-12deg)scale(.7);
+  }
+
+  .hero.animate .hero__button__color-violet.active {
+    -webkit-transform: translate(-41vw, -2vw)rotate(-22deg)scale(.9);
+    transform: translate(-41vw, -2vw)rotate(-22deg)scale(.9);
   }
 
   .hero.animate .hero__description-right {

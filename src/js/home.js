@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initHeroAnimations();
         initButtonsHover();
     }
+    initPhoneSlider();
 });
 
 function initStopVideoOnScroll() {
@@ -105,5 +106,38 @@ function initButtonsHover() {
             video.currentTime = idleTime;
             video.play();
         });
+    });
+}
+
+function initPhoneSlider() {
+    // jQuery
+    const phoneSlider = $('[data-slick]');
+
+    phoneSlider.slick({
+        arrows: false,
+        slidesToShow: 1, 
+        slidesToScroll: 1,
+        autoplay: false,
+        infinite: false,
+        autoplay: true,
+        autoplaySpeed: 3500,
+        responsive: [{
+            breakpoint: 767,
+            settings: {
+                draggable: true,
+                touchMove: true,
+                autoplaySpeed: 1500,
+            }
+        }],
+    });
+
+    phoneSlider.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+        $(`[data-phone-button="${currentSlide +1}"]`).removeClass('active');
+        $(`[data-phone-button="${nextSlide +1}"]`).addClass('active');
+    });
+
+    $('[data-phone-button]').on('mouseenter', (e) => {
+        const relatedSlideId = $(e.target).data('phone-button');
+        phoneSlider.slick('slickGoTo', relatedSlideId -1);
     });
 }

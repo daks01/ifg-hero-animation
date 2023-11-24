@@ -3,7 +3,9 @@
 @media screen and (--screen-tablet) {
 
   /* HERO */
-  .hero {}
+  .hero {
+    /* empty */
+  }
   
   /* отключение видео на мобилках */
   .hero__bg-video {
@@ -27,33 +29,54 @@
   /* BUTTONS */
   .hero__button {
     font-size: 4.5vw;
+    &.active {
+      transform: scale(1.1);
+    }
   }
   .hero__button_type-big {
     padding: 0.65em 1.5em;
+    &.active {
+      transform: scale(1.1);
+    }
   }
   .hero__button__color-orange {
     top: -92%;
     right: 39%;
+    &.active {
+      transform: scale(1.1) rotate(-10deg);
+    }
   }
   .hero__button__color-sky {
     top: -80%;
     right: 4%;
     transform: rotate(15deg);
+    &.active {
+      transform: scale(1.1) rotate(5deg);
+    }
   }
   .hero__button__color-green {
     bottom: 98%;
     transform: rotate(-16deg);
+    &.active {
+      transform: scale(1.1) rotate(-26deg);
+    }
   }
   .hero__button__color-yellow {
     margin: 0;
     position: absolute;
     transform: rotate(-49deg);
+    &.active {
+      transform: scale(1.1) rotate(-59deg);
+    }
     top: 2%;
     left: -7%;
   }
   .hero__button__color-violet {
     margin-top: 10vw;
     margin-bottom: 2vw;
+    &.active {
+      transform: scale(1.1) rotate(-10deg);
+    }
   }
 
   .hero__description-left {
@@ -76,8 +99,15 @@
   }
 
   .hero__footer {
-    margin-top: 0;
-    height: 95vw;
+    margin-top: 5vw;
+    height: 124vw;
+    max-height: 500px;
+  }
+
+  .hero__phone {
+    --width: min(80vw, var(--max-hero-scene-width) / 100 * 80);
+    width: var(--width);
+    max-width: 350px;
   }
 
   /* HERO ANIMATION ON LOAD (idle) && SCROLL (desctop) */
@@ -86,8 +116,12 @@
   .hero__button,
   .hero__footer,
   .hero__description-right {
-    transition: transform ease 1s, padding ease 1s, font-size ease 1s;
-    will-change: transform;
+    transition: transform ease 1s, font-size ease 1s;
+    will-change: transform, font-size;
+    -webkit-perspective: 1px; 
+    perspective: 1px; 
+    -webkit-backface-visibility: none; 
+    backface-visibility: none; 
   }
 
   .hero.animate {
@@ -98,27 +132,42 @@
       transform: translate(27vw, 0);
     }
     .hero__footer {
-      transform: translate(0, -5vw);
+      transform: translate(0, 5vw);
     }
-    .hero__button {
+    /* .hero__button {
       font-size: 3.1vw;
-    }
+    } */
     .hero__button__color-green {
-      transform: translate(33vw, -15vw) rotate(25deg);
+      transform: translate(33vw, -15vw) rotate(25deg) scale(.7);
+      &.active {
+        transform: translate(33vw, -15vw) rotate(15deg) scale(.9);
+      }
     }
     .hero__button__color-orange {
-      transform: translate(33vw, 5vw) rotate(25deg)
+      transform: translate(33vw, 5vw) rotate(25deg) scale(.7);
+      &.active {
+        transform: translate(33vw, 5vw) rotate(15deg) scale(.9);
+      }
     }
     .hero__button__color-yellow {
-      transform: translate(29vw, -11vw) rotate(5deg);
-      font-size: 3.1vw;
+      transform: translate(29vw, -11vw) rotate(5deg) scale(.7);
+      &.active {
+        transform: translate(29vw, -11vw) rotate(-5deg) scale(.9);
+      }
+      /* font-size: 3.1vw; */
     }
     .hero__button__color-sky {
-      transform: translate(-53vw, 0) rotate(-45deg);
+      transform: translate(-53vw, 0) rotate(-45deg) scale(.7);
+      &.active {
+        transform: translate(-53vw, 0) rotate(-55deg) scale(.9);
+      }
     }
     .hero__button__color-violet {
-      transform: translate(-41vw, -2vw) rotate(-12deg);
-      font-size: 3.1vw;
+      transform: translate(-41vw, -2vw) rotate(-12deg) scale(.7);
+      &.active {
+        transform: translate(-41vw, -2vw) rotate(-22deg) scale(.9);
+      }
+      /* font-size: 3.1vw; */
     }
 
     .hero__description-right {

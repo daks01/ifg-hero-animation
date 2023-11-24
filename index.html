@@ -34,8 +34,17 @@
         }
     </style>
 
-    <link rel="stylesheet" href="src/css/home.css?v=0.8">
-    <script type="text/javascript" src="src/js/home.js?v=0.1" defer></script>
+    <link rel="stylesheet" href="src/css/home.css?v=0.14">
+    <script type="text/javascript" src="src/js/home.js?v=0.4" defer></script>
+
+    <!-- подключение карусели, которая и так есть на проекте -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js" defer></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    
 </head>
 <body class="home-controller">
     <div id="publicapp">
@@ -123,23 +132,25 @@
             <section class="hero idle" data-hero>
                 <div data-header-intersection-observer-placeholder></div>
                 <div data-hero-intersection-observer-placeholder></div>
-                <video data-hero-video autoplay muted loop playsinline class="hero__bg-video"
+                <video data-hero-video autoplay muted loop playsinline 
+                    class="hero__bg-video"
                     poster="src/assets/hero-bg.png"
-                    src="src/assets/bg-video.mp4" type='video/mp4'></video>
+                    src="src/assets/bg-video.mp4" type='video/mp4'
+                    aria-hidden></video>
 
                 <div class="hero__scene container-fluid">
                     <h1 class="hero__h1">
                         <span class="hero__h1-left">
-                            <button type="button" aria-hidden="true"
+                            <button type="button" data-phone-button="1" aria-hidden="true"
                                 class="hero__button hero__button__color-orange">#питание</button>
                             <span>
                                 i feel
                             </span>
-                            <button type="button" aria-hidden="true"
+                            <button type="button" data-phone-button="3" aria-hidden="true"
                                 class="hero__button hero__button__color-green">#антистресс</button>
                         </span>
                         <span class="hero__h1-right">
-                            <button type="button" aria-hidden="true"
+                            <button type="button" data-phone-button="2" aria-hidden="true"
                                 class="hero__button hero__button__color-sky hero__button_type-big">#сон</button>
                             <span>
                                 good
@@ -159,9 +170,10 @@
                                         d="M1.645 19.488L5.83333 23.6004L5.83333 0L8.16667 0L8.16667 23.6004L12.355 19.4765L14 21.1077L7 28L0 21.1077L1.645 19.488Z"
                                         fill="white" />
                                 </svg>
-                                <a href="#scanner">Сканер здоровья</a>
+                                <a href="/public/articles/149">Пройти тест</a>
                             </p>
-                            <button type="button" aria-hidden="true"
+                            <!-- ToDo убрать [disabled] когда появится скриншот для слайдерв в телефоне -->
+                            <button type="button" disabled data-phone-button="5" aria-hidden="true"
                                 class="hero__button hero__button__color-yellow hero__button_type-big">#мотивация</button>
                         </div>
                         <div class="hero__description-right">
@@ -170,37 +182,30 @@
                                 вашему здоровью
                             </p>
                             <br>
-                            <button type="button" aria-hidden="true"
+                            <button type="button" data-phone-button="4" aria-hidden="true"
                                 class="hero__button hero__button__color-violet">#Физическая активность</button>
                         </div>
                     </div>
                     <div class="hero__footer">
-                        <!-- слайдер оставить без изменений -->
-                        <div data-v-0df6ea26="" class="phoneImg">
-                            <div data-v-0df6ea26="" class="sub-img">
-                                <link rel="stylesheet"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
-                                <link rel="stylesheet"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-                                <div dir="ltr" class="slick-slider slick-slider slick-initialized">
-                                    <div data-v-3d1a4f76="" class="slick-list">
-                                        <div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track">
-                                            <div data-v-e4caeaf8="" tabindex="-1" data-index="-1" aria-hidden="true"
-                                                class="slick-slide slick-cloned" style="width: 100%;">
-                                                <div data-v-e4caeaf8="">
-                                                    <img data-v-0df6ea26="" data-v-e4caeaf8=""
-                                                        src="http://new.cw13161.tmweb.ru//images/phone2home.svg" alt=""
-                                                        width="100%" tabindex="-1"
-                                                        style="width: 100%; display: inline-block;">
-                                                </div>
-                                            </div>
-                                            <!-- итд -->
-                                        </div>
-                                    </div>
+                        <!-- 
+                            ToDo новый слайдер
+                            когда-нибудь появится еще один слайд с экраном #Мотивация
+                         -->
+                        <div class="hero__phone">
+                            <div class="hero__phone-slider">
+                                <div data-slick style="overflow: hidden;">
+                                    <img src="src/assets/iphone/IPhone_14_Pro_vector 1.svg" alt="" width="100%"/>
+                                    <img src="src/assets/iphone/IPhone_14_Pro_vector 2.svg" alt="" width="100%"/>
+                                    <img src="src/assets/iphone/IPhone_14_Pro_vector 3.svg" alt="" width="100%"/>
+                                    <img src="src/assets/iphone/IPhone_14_Pro_vector 5.svg" alt="" width="100%"/>
+                                    <!-- <img src="src/assets/iphone/IPhone_14_Pro_vector 4.svg" alt="" width="100%"/> -->
                                 </div>
                             </div>
                         </div>
-
+                        <!-- ToDo слайдер старый грохаем -->
+                        <!-- <div data-v-0df6ea26="" class="phoneImg">
+                            ...
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -220,8 +225,8 @@
 
                     <!-- Сканер перенести сюда -->
                     <div class="mobile-scaner">
-                        <a href="#scanner" class="btn btn-success btn-scaner">
-                            Сканер здоровья
+                        <a href="/public/articles/149" class="btn btn-success btn-scaner">
+                            Пройти тест
                             <svg aria-hidden="true" width="14" height="28" viewBox="0 0 14 28" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -235,8 +240,8 @@
                 </div>
             </section>
             <!-- <div data-v-a2f233da="" class="float-btn-test">
-                <a data-v-a2f233da="" href="/articles/about-test">
-                    <span data-v-a2f233da="">Сканер здоровья</span> 
+                <a data-v-a2f233da="" href="/public/articles/149">
+                    <span data-v-a2f233da="">Пройти тест</span> 
                     <svg data-v-a2f233da="" xmlns="http://www.w3.org/2000/svg" width="37" height="18" viewBox="0 0 37 18" fill="none"><path data-v-a2f233da="" d="M25.4921 15.4475L30.7157 10.4404L0.738281 10.4404L0.738281 7.65091L30.7157 7.65091L25.4775 2.6438L27.5494 0.677221L36.3041 9.04564L27.5494 17.4141L25.4921 15.4475Z" fill="white"></path></svg>
                 </a>
             </div> -->
